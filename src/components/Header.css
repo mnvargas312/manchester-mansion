@@ -1,0 +1,252 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header.scrolled {
+  background-color: rgba(235, 231, 226, 0.97);
+  box-shadow: 0 2px 12px rgba(22, 39, 68, 0.12);
+}
+
+.header-top {
+  background-color: #162744;
+  padding: 8px 0;
+  color: #f4f4f4;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.header-top-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.header-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-icon {
+  font-size: 12px;
+}
+
+.nav-bar {
+  background-color: #ebe7e2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  position: relative;
+  border-bottom: 1px solid rgba(130, 129, 128, 0.35);
+}
+
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(22, 39, 68, 0.45);
+  background-color: #f4f4f4;
+  border-radius: 4px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.menu-toggle span {
+  width: 20px;
+  height: 2px;
+  background-color: #162744;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #2f3131;
+  font-size: 13px;
+  font-family: 'Alegreya SC', Georgia, serif;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #162744;
+}
+
+.nav-icon {
+  font-size: 10px;
+  color: #828180;
+}
+
+.logo-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.logo {
+  background-color: #f4f4f4;
+  border: 1px solid rgba(130, 129, 128, 0.35);
+  padding: 16px 26px;
+  text-align: center;
+  min-width: 250px;
+}
+
+.logo-monogram {
+  font-size: 15px;
+  color: #5f4f4a;
+  font-family: 'Alegreya SC', Georgia, serif;
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+}
+
+.logo-text-script {
+  font-family: 'Alegreya SC', Georgia, serif;
+  font-size: 26px;
+  color: #162744;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.logo-text-serif {
+  font-family: 'Alegreya SC', Georgia, serif;
+  font-size: 17px;
+  color: #2f3131;
+  margin-bottom: 8px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.logo-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(130, 129, 128, 0.55);
+  margin: 8px 0;
+}
+
+.logo-location {
+  font-size: 11px;
+  color: #162744;
+  letter-spacing: 0.08em;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .nav-bar {
+    justify-content: flex-end;
+    padding: 15px 20px;
+    min-height: 92px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .logo-container {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    margin: 0;
+    margin-right: auto;
+  }
+
+  .logo {
+    min-width: 185px;
+    padding: 10px 14px;
+  }
+
+  .logo-monogram {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  .logo-text-script {
+    font-size: 20px;
+    margin-bottom: 2px;
+  }
+
+  .logo-text-serif {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .logo-location {
+    font-size: 9px;
+  }
+
+  .mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #ebe7e2;
+    border-bottom: 1px solid rgba(130, 129, 128, 0.35);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.28s ease, opacity 0.28s ease;
+  }
+
+  .mobile-menu.open {
+    max-height: 380px;
+    opacity: 1;
+  }
+
+  .mobile-menu-link {
+    padding: 14px 20px;
+    text-decoration: none;
+    color: #2f3131;
+    font-family: 'Alegreya SC', Georgia, serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(130, 129, 128, 0.2);
+  }
+
+  .mobile-menu-link:hover {
+    color: #162744;
+    background-color: #f4f4f4;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-top-content {
+    flex-direction: column;
+    gap: 5px;
+    font-size: 12px;
+  }
+}
+

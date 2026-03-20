@@ -1,0 +1,202 @@
+.about {
+  width: 100%;
+  padding: 80px 40px;
+  background-color: #ebe7e2;
+}
+
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-text-section {
+  margin-bottom: 60px;
+}
+
+.about-title {
+  font-family: 'Alegreya SC', Georgia, serif;
+  font-size: 52px;
+  margin-bottom: 40px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.about-title-part1 {
+  color: #162744;
+}
+
+.about-title-part2 {
+  color: #5f4f4a;
+  font-style: italic;
+}
+
+.about-text-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.about-column {
+  color: #2f3131;
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+.about-column p {
+  margin-bottom: 20px;
+}
+
+.about-section-2 {
+  margin-top: 80px;
+  width: 100%;
+}
+
+.about-section-2-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.about-image-container {
+  width: 100%;
+  height: 500px;
+}
+
+.about-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #d9d6d0 0%, #c8c4be 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5f4f4a;
+}
+
+/* When you add your image, use this class */
+.about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-text-block {
+  padding: 20px;
+}
+
+.about-heading {
+  font-family: 'Alegreya SC', Georgia, serif;
+  font-size: 44px;
+  margin-bottom: 30px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+}
+
+.about-heading-part1 {
+  color: #162744;
+}
+
+.about-heading-part2 {
+  color: #5f4f4a;
+}
+
+.about-description {
+  color: #2f3131;
+  font-size: 20px;
+  line-height: 1.65;
+  margin-bottom: 30px;
+}
+
+.about-cta-button {
+  background-color: transparent;
+  color: #162744;
+  border: 1px solid #162744;
+  padding: 15px 25px;
+  font-size: 14px;
+  font-family: 'Alegreya SC', Georgia, serif;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.about-cta-button:hover {
+  background-color: #162744;
+  color: #f4f4f4;
+}
+
+.about-cta-button::after {
+  content: '→';
+  font-size: 18px;
+}
+
+.about-interior-image-container {
+  width: 100%;
+  height: 500px;
+}
+
+.about-interior-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #d6d3cd 0%, #c8c4be 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5f4f4a;
+}
+
+/* When you add your image, use this class */
+.about-interior-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder-text {
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+}
+
+@media (max-width: 1024px) {
+  .about-section-2-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-image-container,
+  .about-interior-image-container {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 60px 20px;
+  }
+
+  .about-title {
+    font-size: 42px;
+  }
+
+  .about-text-columns {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .about-heading {
+    font-size: 36px;
+  }
+
+  .about-image-container,
+  .about-interior-image-container {
+    height: 300px;
+  }
+}
+
