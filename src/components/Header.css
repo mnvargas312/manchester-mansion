@@ -159,10 +159,16 @@
 }
 
 @media (max-width: 1024px) {
+  /* Balanced row: [spacer] [centered logo] [hamburger] */
   .nav-bar {
-    justify-content: flex-end;
-    padding: 15px 20px;
-    min-height: 92px;
+    display: grid;
+    grid-template-columns: 48px 1fr 48px;
+    grid-template-rows: auto auto;
+    align-items: center;
+    justify-items: stretch;
+    padding: 10px 14px;
+    min-height: unset;
+    column-gap: 6px;
   }
 
   .nav-links {
@@ -171,74 +177,109 @@
 
   .menu-toggle {
     display: flex;
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    align-self: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+  }
+
+  .menu-toggle span {
+    width: 18px;
   }
 
   .logo-container {
     position: relative;
-    left: 0;
-    top: 0;
+    left: auto;
+    top: auto;
     transform: none;
     margin: 0;
-    margin-right: auto;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    max-width: 100%;
   }
 
   .logo {
-    min-width: 185px;
-    padding: 10px 14px;
+    min-width: unset;
+    width: fit-content;
+    max-width: min(200px, 78vw);
+    margin: 0 auto;
+    padding: 8px 12px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(22, 39, 68, 0.08);
   }
 
   .logo-monogram {
-    font-size: 12px;
-    margin-bottom: 5px;
+    font-size: 10px;
+    margin-bottom: 3px;
+    letter-spacing: 0.16em;
   }
 
   .logo-text-script {
-    font-size: 20px;
-    margin-bottom: 2px;
+    font-size: 17px;
+    margin-bottom: 1px;
+    line-height: 1.1;
   }
 
   .logo-text-serif {
-    font-size: 13px;
-    margin-bottom: 6px;
+    font-size: 11px;
+    margin-bottom: 4px;
+    letter-spacing: 0.08em;
+  }
+
+  .logo-divider {
+    margin: 5px 0;
   }
 
   .logo-location {
-    font-size: 9px;
+    font-size: 8px;
+    letter-spacing: 0.06em;
   }
 
+  /* In-flow menu under the bar (no overlap with logo) */
   .mobile-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
+    position: static;
+    grid-column: 1 / -1;
+    grid-row: 2;
     display: flex;
     flex-direction: column;
+    width: 100%;
     background-color: #ebe7e2;
-    border-bottom: 1px solid rgba(130, 129, 128, 0.35);
+    border-top: 1px solid rgba(130, 129, 128, 0.25);
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-height 0.28s ease, opacity 0.28s ease;
+    transition: max-height 0.3s ease, opacity 0.25s ease;
+    margin-top: 8px;
   }
 
+  .nav-bar.menu-open .mobile-menu,
   .mobile-menu.open {
-    max-height: 380px;
+    max-height: 420px;
     opacity: 1;
   }
 
   .mobile-menu-link {
-    padding: 14px 20px;
+    padding: 12px 18px;
     text-decoration: none;
     color: #2f3131;
     font-family: 'Alegreya SC', Georgia, serif;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    border-top: 1px solid rgba(130, 129, 128, 0.2);
+    font-size: 13px;
+    border-top: 1px solid rgba(130, 129, 128, 0.15);
+  }
+
+  .mobile-menu-link:first-of-type {
+    border-top: none;
   }
 
   .mobile-menu-link:hover {
     color: #162744;
-    background-color: #f4f4f4;
+    background-color: rgba(244, 244, 244, 0.85);
   }
 }
 
@@ -247,6 +288,41 @@
     flex-direction: column;
     gap: 5px;
     font-size: 12px;
+  }
+}
+
+/* Extra-compact logo on small phones (still uses hamburger grid from 1024px) */
+@media (max-width: 480px) {
+  .nav-bar {
+    grid-template-columns: 40px 1fr 40px;
+    padding: 8px 8px;
+    column-gap: 4px;
+  }
+
+  .menu-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo {
+    max-width: min(158px, 84vw);
+    padding: 6px 9px;
+  }
+
+  .logo-text-script {
+    font-size: 14px;
+  }
+
+  .logo-text-serif {
+    font-size: 10px;
+  }
+
+  .logo-monogram {
+    font-size: 9px;
+  }
+
+  .logo-location {
+    font-size: 7px;
   }
 }
 
