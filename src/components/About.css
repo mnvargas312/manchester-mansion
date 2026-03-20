@@ -1,6 +1,7 @@
 .about {
   width: 100%;
-  padding: 80px 40px;
+  /* Extra top space: fixed header + centered logo box extends below nav bar */
+  padding: 200px 40px 80px;
   background-color: #ebe7e2;
 }
 
@@ -165,6 +166,11 @@
 }
 
 @media (max-width: 1024px) {
+  .about {
+    /* Logo sits in normal flow on tablet/mobile — less overlap */
+    padding-top: 140px;
+  }
+
   .about-section-2-content {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -178,7 +184,7 @@
 
 @media (max-width: 768px) {
   .about {
-    padding: 60px 20px;
+    padding: 120px 20px 60px;
   }
 
   .about-title {
