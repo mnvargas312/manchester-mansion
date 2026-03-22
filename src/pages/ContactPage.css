@@ -72,6 +72,27 @@
   color: #162744;
 }
 
+.contact-embed-wrap {
+  min-width: 0;
+}
+
+.contact-embed-note {
+  font-size: 15px;
+  line-height: 1.55;
+  color: #5f4f4a;
+  margin-bottom: 14px;
+  max-width: 520px;
+}
+
+.contact-embed-iframe {
+  display: block;
+  width: 100%;
+  min-height: 720px;
+  border: 1px solid rgba(130, 129, 128, 0.35);
+  border-radius: 4px;
+  background-color: #fff;
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -234,6 +255,10 @@
 
   .contact-row {
     grid-template-columns: 1fr;
+  }
+
+  .contact-embed-iframe {
+    min-height: 820px;
   }
 
   .faq-title {

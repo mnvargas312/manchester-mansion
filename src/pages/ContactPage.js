@@ -1,21 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './ContactPage.css';
 
 const ContactPage = () => {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Placeholder: your boss will provide an HTML script to wire submission.
-    console.log('Contact form submit:', form);
-    setForm({ name: '', email: '', subject: '', message: '' });
-  };
-
   return (
     <section id="contact" className="contactPage">
       <div className="contact-image-wrap">
@@ -53,53 +39,16 @@ const ContactPage = () => {
             </div>
           </div>
 
-          <div className="contact-section contact-form-section">
+          <div className="contact-section contact-form-section contact-embed-wrap">
             <h3 className="contact-heading">Contact</h3>
-
-            <form onSubmit={handleSubmit} className="contact-form">
-              <div className="contact-row">
-                <input
-                  type="text"
-                  placeholder="Name*"
-                  value={form.name}
-                  onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
-                  className="contact-input"
-                  required
-                />
-                <input
-                  type="email"
-                  placeholder="E-mail*"
-                  value={form.email}
-                  onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
-                  className="contact-input"
-                  required
-                />
-              </div>
-
-              <input
-                type="text"
-                placeholder="Subject*"
-                value={form.subject}
-                onChange={(e) => setForm((prev) => ({ ...prev, subject: e.target.value }))}
-                className="contact-input"
-                required
-              />
-
-              <textarea
-                placeholder="Message*"
-                value={form.message}
-                onChange={(e) => setForm((prev) => ({ ...prev, message: e.target.value }))}
-                className="contact-textarea"
-                required
-              />
-
-              <button type="submit" className="contact-submit">
-                <span className="contact-submit-text">SUBMIT</span>
-                <span className="contact-submit-arrow" aria-hidden="true">
-                  →
-                </span>
-              </button>
-            </form>
+            <p className="contact-embed-note">
+              Complete the form below to reach our team. Your message is sent securely through our booking platform.
+            </p>
+            <iframe
+              title="Contact form"
+              src={`${process.env.PUBLIC_URL}/contact-embed.html`}
+              className="contact-embed-iframe"
+            />
           </div>
         </div>
 

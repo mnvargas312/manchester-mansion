@@ -1,0 +1,229 @@
+
+   <html>
+<head>
+<meta charset="utf-8"/>
+<title>Contact Form</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <form id="form_Contact" name="Contact Form" class="form-horizontal form-bordered">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="text-center" ><font face="Monotype Corsiva, Apple Chancery, cursive" style="font-size: 24px; color:#656565">Please feel free to fill out this form, we will contact you back as soon as possible</font></div><br>
+                 <div class="form-group"><label class="col-md-3 control-label">Type of Event</label><div class="col-md-7"><select id="formElement_9f426" class="form-control" name="Type of event" size="1"></select><span id="warning_event_type" class="text-danger"></span></div></div><div class="form-group"><label class="col-md-3 control-label">First Name</label><div class="col-md-7"><input type="text" class="form-control" id="txt_FirstName" maxlength="100"><span id="warning_first_name" class="text-danger"></span></div></div><div class="form-group"><label class="col-md-3 control-label">Last Name</label><div class="col-md-7"><input type="text" class="form-control" id="txt_LastName" maxlength="100"></div></div><div class="form-group"><label class="col-md-3 control-label">Daytime Phone</label><div class="col-md-7"><input type="text" class="form-control phone" id="txt_DaytimePhone" onkeypress="return isNumberKey(event)" maxlength="10"><span id="warning_day_phone" class="text-danger"></span></div></div><div class="form-group"><label class="col-md-3 control-label">Email</label><div class="col-md-7"><input type="email" class="form-control" id="txt_Email" maxlength="200"><span id="warning_email" class="text-danger"></span></div></div><div class="text-center"><button type="button" onclick="return wstxSubmitForm(this);" id="wstForm_Contact_Submit" class="btn btn-success btn-md">Submit</button><button type="reset" class="btn btn-default btn-md">Reset</button></div>
+    </div>
+    </form>
+    <style>
+    .control-label {
+        font-weight: normal;
+        color:#656565
+    }
+    </style>
+    <script>
+           var web = "https://charlescheneymansioninn.com";
+                    $(document).ready(function(event){
+                                
+                    GetAllEventTypes(); 
+         
+                }); 
+        
+$('.phone').on('input', function () {
+    var number = $(this).val().replace(/[^\d]/g, '');
+    if (number.length == 7) {
+      number = number.replace(/(\d{3})(\d{4})/, "$1-$2");
+    } else if (number.length == 10) {
+      number = number.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+    }
+    $(this).val(number);
+  });
+
+        function isNumberKey(evt){
+            var a = [];
+            var k = evt.which;
+            for (i = 8; i < 58; i++)
+            a.push(i);
+            if (!(a.indexOf(k)>=0))
+            evt.preventDefault();
+        }
+        
+        function isEmail(email) {
+            var regex = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(email);
+        }
+    
+        function validateAndDisplayWarning(selector, warningId, warningMessage) {
+  const $el = $(selector);
+  const $input = $(selector);
+  const value = $input.val() ? $input.val().trim() : "";
+  const $warning = $("#" + warningId);
+
+  // Clear previous warning
+  $warning.text("");
+
+  // Skip validation if field is hidden (e.g., ng-show or display: none)
+  if (!$el.is(":visible")) return true;
+
+  
+
+  if (!value || value === "-1") {
+    $warning.text(warningMessage);
+    return false;
+  }
+
+  // Additional field-specific checks
+  if (selector === "#txt_ZipCode" && value.length < 5) {
+    $warning.text("Please enter a valid zip code");
+    return false;
+  }
+
+  if (selector === "#txt_DaytimePhone" && value.length < 10) {
+    $warning.text("Please enter a valid day time phone number");
+    return false;
+  }
+
+  if (selector === "#txt_EveningPhone" && value.length < 10) {
+    $warning.text("Please enter a valid evening time phone number");
+    return false;
+  }
+
+if (selector === "#txt_Email" && value.length > 0) {
+      var isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      console.log("Email entered:", value);
+      if (!isValidEmail) {
+        $warning.text("Please enter a valid email address");
+        return false;
+      }
+    }
+       if (selector === "#datePicker") {
+    if (!value) {
+      $warning.text("Please select desired event date");
+      return false;
+    }
+    return true;
+  }
+  return true;
+}
+
+        
+         
+                function wstxSubmitForm() {
+
+    
+var isValid = true;
+
+var isValid = true;
+
+isValid = validateAndDisplayWarning("#formElement_9f426", "warning_event_type", "Please select the type of event") && isValid;
+isValid = validateAndDisplayWarning("#txt_FirstName", "warning_first_name", "Please fill in your first name") && isValid;
+isValid = validateAndDisplayWarning("#txt_LastName", "warning_last_name", "Please fill in your last name") && isValid;
+isValid = validateAndDisplayWarning("#txt_DaytimePhone", "warning_day_phone", "Please fill in your daytime phone number") && isValid;
+isValid = validateAndDisplayWarning("#txt_Email", "warning_email", "Please fill in your email address") && isValid;
+isValid = validateAndDisplayWarning("#formElement_9f426", "warning_event_type", "Please select the type of event") && isValid;
+isValid = validateAndDisplayWarning("#txt_FirstName", "warning_first_name", "Please fill in your first name") && isValid;
+isValid = validateAndDisplayWarning("#txt_LastName", "warning_last_name", "Please fill in your last name") && isValid;
+isValid = validateAndDisplayWarning("#txt_DaytimePhone", "warning_day_phone", "Please fill in your daytime phone number") && isValid;
+isValid = validateAndDisplayWarning("#txt_Email", "warning_email", "Please fill in your email address") && isValid;
+isValid = validateAndDisplayWarning("#formElement_9f426", "warning_event_type", "Please select the type of event") && isValid;
+isValid = validateAndDisplayWarning("#txt_FirstName", "warning_first_name", "Please fill in your first name") && isValid;
+isValid = validateAndDisplayWarning("#txt_LastName", "warning_last_name", "Please fill in your last name") && isValid;
+isValid = validateAndDisplayWarning("#txt_DaytimePhone", "warning_day_phone", "Please fill in your daytime phone number") && isValid;
+isValid = validateAndDisplayWarning("#txt_Email", "warning_email", "Please fill in your email address") && isValid;
+
+
+
+if (isValid) {
+
+  $("#wstForm_Contact_Submit").attr('disabled', 'disabled');        
+  var data = {
+      "Address":"",
+      "City":$("#formElement_State").val(),
+      "Code": 15076,
+      "DayPhone":$("#txt_DaytimePhone").val(),
+      "DesiredEventDate": $("#datePicker").val(),
+      "Email":$("#txt_Email").val(),
+      "EveningPhone":$("#txt_EveningPhone").val(),
+      "FirstName": $("#txt_FirstName").val(),
+      "LastName":$("#txt_LastName").val(),
+      NoOfGuests: parseInt($("#txt_NoGuests").val()) || 0,
+      "Questions":$("#txt_Questions").val(),
+      "SourceReferral":"Other",
+      "State":$("#formElement_State").val(),
+      "YouAre":$("#txt_YouAre").val(),
+      "Zip":$("#txt_ZipCode").val(),
+      "EventType": parseInt($("#formElement_9f426").val())
+  };
+  console.log(JSON.stringify(data, undefined, 2));
+
+  var servicePath = "https://bossplatform.com/LeadServices/LeadService/AddLeadV2";
+  $.ajax({
+      type: "POST",
+      url: servicePath,
+      data: JSON.stringify(data),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      processData: true,
+      success: function (data, status, jqXHR) {
+          console.log(data);
+          if (data.Status == 'Success') {
+              alert("Thank you, a representative will be in touch shortly!");  
+              var frm = document.getElementsByName('Contact Form')[0];                       
+              frm.reset();  // Reset all form data
+              $("#wstForm_Contact_Submit").attr('disabled', false);
+              if(web != "")
+              {
+              location.href = web;
+              }
+              //return false;
+          }
+          else {
+              $("#wstForm_Contact_Submit").attr('disabled', false);
+              console.log("else");
+              alert(data.Message);
+              
+          }
+      },
+      error: function (e) {
+          $("#wstForm_Contact_Submit").attr('disabled', false);
+          console.log("error");
+          console.log(e);
+      }
+  });
+}
+
+return false;
+                }
+  
+
+        
+          function GetAllEventTypes() {
+            var inputJson = {
+                "Code": 15076,
+            }
+            States = [];
+            $.ajax({
+                url: "https://www.bossplatform.com/LeadServices/LeadService/GetAllEventTypes",
+                type: 'POST',
+                headers: {
+                    "content-type": "application/json"
+                },
+                dataType: 'json',
+                data: JSON.stringify(inputJson),
+                success: function (result) {
+                    if (result.Status == "Success") {
+                        $('#formElement_9f426').find('option').remove();
+                        $('#formElement_9f426').append(`<option value="-1" selected disabled hidden>-- Please Select --</option>`)
+                        States = result.EventTypeList;
+                        $.each(States, function (index, obj) {
+                            $('#formElement_9f426').append(
+                               `<option value="`+ obj.EventTypeId + `">`+ obj.EventType + `</option>` 
+                            )
+                    })
+                }
+                }
+            })
+        }
+        
+        
+    </script>
+</body>
+</html>
