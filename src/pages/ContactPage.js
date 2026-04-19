@@ -1,7 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ContactPage.css';
 
+const INQUIRY_LOADER = `(n=>{var e=new XMLHttpRequest,a=document.createElement("progress"),t=(a.setAttribute("aria-label","Content loading…"),document.getElementById("inquiry-form"));t&&(t.appendChild(a),e.addEventListener("progress",function(e){e.lengthComputable&&(e.total,a.setAttribute("value",e.loaded),a.setAttribute("max",e.total))},!1)),e.addEventListener("load",function(e){var e=e.target,t=document.createElement("script");t.innerHTML=e.responseText,t.dataset.host=n,document.documentElement.appendChild(t),t.addEventListener("load",function(){a.remove()})},!1),e.open("GET",n+"/index.js?cb="+(new Date).getTime(),!0),e.send()})('//inquiries.rockpapercoin.com');`;
+
 const ContactPage = () => {
+  useEffect(() => {
+    if (!document.getElementById('inquiry-form')) return;
+
+    const script = document.createElement('script');
+    script.setAttribute('data-rpc-inquiry-loader', 'true');
+    script.textContent = INQUIRY_LOADER;
+    document.body.appendChild(script);
+
+    return () => {
+      script.remove();
+      const form = document.getElementById('inquiry-form');
+      if (form) {
+        form.replaceChildren();
+      }
+      document.querySelectorAll('script[data-host]').forEach((node) => {
+        const host = node.getAttribute('data-host') || '';
+        if (host.includes('inquiries.rockpapercoin.com')) {
+          node.remove();
+        }
+      });
+    };
+  }, []);
+
   return (
     <section id="contact" className="contactPage">
       <div className="contact-image-wrap">
@@ -42,12 +67,13 @@ const ContactPage = () => {
           <div className="contact-section contact-form-section contact-embed-wrap">
             <h3 className="contact-heading">Contact</h3>
             <p className="contact-embed-note">
-              Complete the form below to reach our team. Your message is sent securely through our booking platform.
+              Use the form below to send an inquiry. You will be contacted as soon as possible.
             </p>
-            <iframe
-              title="Contact form"
-              src={`${process.env.PUBLIC_URL}/contact-embed.html`}
-              className="contact-embed-iframe"
+            <div
+              id="inquiry-form"
+              className="inquiry-form-root"
+              data-api-key="$2a$10$1.XI4WgjEZY.JD60K60DN.EMLmfqDx2MosWEPnPUeQ719EI10xeYC"
+              data-organization-id="cmn29me9a0ib8mq19r2wvxs7o"
             />
           </div>
         </div>

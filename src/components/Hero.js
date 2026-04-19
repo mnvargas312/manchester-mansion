@@ -47,7 +47,9 @@ const Hero = () => {
       </div>
       <div className="hero-overlay">
         <div className="hero-content">
-          <button className="hero-button">Book Online</button>
+          <a href="#contact" className="hero-button">
+            Book Online
+          </a>
           <h1 className="hero-title">A Historic Mansion for Private Gatherings</h1>
           <p className="hero-subtitle">
             Refined spaces shaped by Connecticut heritage, designed for meaningful moments.

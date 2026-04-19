@@ -84,10 +84,9 @@
   max-width: 520px;
 }
 
-.contact-embed-iframe {
-  display: block;
+.inquiry-form-root {
   width: 100%;
-  min-height: 720px;
+  min-height: 520px;
   border: 1px solid rgba(130, 129, 128, 0.35);
   border-radius: 4px;
   background-color: #fff;
@@ -257,8 +256,8 @@
     grid-template-columns: 1fr;
   }
 
-  .contact-embed-iframe {
-    min-height: 820px;
+  .inquiry-form-root {
+    min-height: 640px;
   }
 
   .faq-title {
